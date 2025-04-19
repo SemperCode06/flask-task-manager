@@ -1,1 +1,6 @@
 python-dotenv
+flask
+wtforms
+flask_migrate
+flask_sqlalchemy
+flask_wtf
