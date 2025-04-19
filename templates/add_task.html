@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Task</title>
+</head>
+<body>
+    <h1>Add Task</h1>
+    <form method="post">
+        {{ form.csrf_token }}
+        {{ form.title.label }}  {{ form.title }}
+        {{ form.description.label }} {{ form.description }}
+        {{ form.due_date.label }} {{ form.due_date }}
+        {{ form.priority.label }}  {{ form.priority }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>

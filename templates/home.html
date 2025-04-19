@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+</head>
+<body>
+    <h1>Task Manager</h1>
+
+    <!-- Add Task Form -->
+    <form action="/add" method="POST" style="margin-bottom: 20px; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+        <label for="title">Task Title:</label>
+        <input type="text" id="title" name="title" placeholder="Enter task title" required>
+        <br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" placeholder="Enter task description"></textarea>
+        <br>
+
+        <label for="due_date">Due date:</label>
+        <input type="date" id="due_date" name="due_date">
+        <br>
+
+        <label for="priority">Priority:</label>
+        <select id="priority" name="priority">
+            <option value="Low">Low</option>
+            <option value="Normal" selected>Normal</option>
+            <option value="High">High</option>
+        </select>
+        <br>
+
+        <button type="submit">Add Task</button>
+    </form>
+
+    <!-- Task List -->
+    <ul>
+        {% for task in tasks %}
+        <li>
+            <strong>{{ task.title }}</strong> - {{ task.priority }} - {{ task.description or "No description" }}
+            {% if task.completed %}
+                <em>completed</em>
+            {% else %}
+                <em>Pending</em>
+            {% endif %}
+            <a href="{{ url_for('delete_task', task_id=task_id) }}">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
